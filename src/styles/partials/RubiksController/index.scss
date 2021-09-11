@@ -1,0 +1,34 @@
+@import './Rubiks/index.scss';
+
+.rubiks-controller {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  perspective: 7 * $pieceSize;
+  transform-style: preserve-3d;
+  
+  .rubiks-controls {
+    top: 0;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: none;
+    padding: 0.25em;
+    width: calc(100% - 0.5em);
+  }
+  
+  .rubiks-display {
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    width: $cubeWidth * $pieceSize;
+    height: $cubeWidth * $pieceSize;
+    transition: 0.1s transform ease-in;
+  }
+}

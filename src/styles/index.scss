@@ -1,0 +1,41 @@
+@use 'sass:map';
+@use 'sass:math';
+
+@import './variables.scss';
+@import './mixins.scss';
+
+@import './partials/Scene.scss';
+@import './partials/RubiksController/index.scss';
+
+body {
+  margin: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+.button {
+  font-size: 1rem !important;
+  padding: 0.75em !important;
+  color: #777;
+  pointer-events: all;
+  margin: 0.25em;
+  background: none;
+  border-radius: 50%;
+  box-shadow: none;
+  border: none;
+  height: 1.5em;
+  width: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  &:hover:not([disabled]) {
+    cursor: pointer;
+    color: black;
+    background: #efefef;
+  }
+
+  .icon {
+    font-size: 1.5em;
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "react-css-rubiks-cube",
+  "version": "0.1.0",
+  "description": "Rubik's Cube rendered in CSS",
+  "author": "Nick Hurlock <nhurlock@gmail.com>",
+  "dependencies": {
+    "material-icons": "^1.2.1",
+    "ramda": "^0.27.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3"
+  },
+  "keywords": [
+    "react",
+    "rubiks",
+    "cube",
+    "css",
+    "sass",
+    "scss"
+  ],
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "sass": "^1.39.0",
+    "sass-loader": "^12.1.0"
+  }
+}

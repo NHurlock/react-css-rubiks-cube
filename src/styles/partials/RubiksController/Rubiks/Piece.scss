@@ -1,0 +1,57 @@
+.piece {
+  width: $pieceSize;
+  height: $pieceSize;
+  transform-style: preserve-3d;
+  position: absolute;
+  
+  > * {
+    width: $pieceSize;
+    height: $pieceSize;
+    position: absolute;
+  }
+  
+  @include sideColor(blue);
+  @include sideColor(red);
+  @include sideColor(orange);
+  @include sideColor(white);
+  @include sideColor(green);
+  @include sideColor(yellow);
+
+  .filler {
+    top: 0;
+    position: absolute;
+    background: black;
+
+    @include sideTransform('right');
+    @include sideTransform('back');
+    @include sideTransform('left');
+    @include sideTransform('bottom');
+    @include sideTransform('top');
+  }
+
+  .face {
+    transform: $pieceSideTranslate;
+
+    &:hover {
+      .icon {
+        opacity: 0.4;
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    .icon {
+      position: absolute;
+      opacity: 0;
+      font-size: 3em;
+      padding: 0.2em;
+
+      @include actionIcon('top', 'left');
+      @include actionIcon('bottom', 'right', 180deg);
+      @include actionIcon('left', 'bottom', 270deg);
+      @include actionIcon('right', 'top', 90deg);
+    }
+  }
+}

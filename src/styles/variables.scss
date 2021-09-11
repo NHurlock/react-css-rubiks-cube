@@ -1,0 +1,19 @@
+$spinAnimationDuration: 0.5s;
+$cubeWidth: 3;
+$pieceSize: 10em;
+$pieceSideTranslate: translateZ(math.div($pieceSize, 2));
+$pieceOffset: $pieceSize * (math.div($cubeWidth, 2) - 0.5);
+
+$axis3dMap: (
+  x: (1,0,0),
+  y: (0,1,0),
+  z: (0,0,1)
+);
+$sideRotateMap: (
+  front: rotateX(0deg),
+  back: rotateY(180deg),
+  right: rotateY(90deg),
+  left: rotateY(270deg),
+  bottom: rotateX(270deg),
+  top: rotateX(90deg)
+);

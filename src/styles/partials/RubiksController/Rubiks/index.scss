@@ -1,0 +1,30 @@
+@import './Piece.scss';
+
+.rubiks {
+  position: absolute;
+  backface-visibility: visible;
+  transform-style: preserve-3d;
+  width: $cubeWidth * $pieceSize;
+  height: $cubeWidth * $pieceSize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &[class*="rotated-"] .piece {
+    transition: $spinAnimationDuration transform;
+  }
+
+  @include rotatedPieces();
+
+  @for $offset from 0 to $cubeWidth {
+    @each $axis in ('x', 'y', 'z') {
+      &.rotated-#{$axis}-#{$offset} {
+        @include rotatedPieces($axis, $offset, if($axis != 'y', 90deg, -90deg));
+      }
+
+      &.rotated-#{$axis}-#{$offset}-ccw {
+        @include rotatedPieces($axis, $offset, if($axis != 'y', -90deg, 90deg));
+      }
+    }
+  }
+}

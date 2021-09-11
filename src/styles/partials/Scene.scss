@@ -1,0 +1,42 @@
+.scene {
+  position: relative;
+  overflow: hidden;
+
+  .scene-controls {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    
+    .rotate-controls-holder {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      max-height: 60em;
+      max-width: 60em;
+  
+      .rotate-controls {
+        position: relative;
+        display: flex;
+        flex-grow: 1;
+        height: 100%;
+        justify-content: space-between;
+        align-items: center;
+        pointer-events: none;
+  
+        &.y-axis {
+          flex-direction: row;
+        }
+  
+        &.z-axis {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}

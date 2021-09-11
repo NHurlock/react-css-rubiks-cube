@@ -1,0 +1,71 @@
+@mixin sideTransform($name, $preTransform: null, $postTransform: $pieceSideTranslate) {
+  &.#{$name} {
+    transform: $preTransform map.get($sideRotateMap, $name) $postTransform;
+  }
+}
+
+@mixin rotatedPieces($axis: false, $offset: 0, $deg: 0deg) {
+  $selector: '';
+  $rotation: rotate3d(0,0,0, 0deg);
+  
+  @if $axis != false {
+    $selector: '.axis-#{$axis}-#{$offset}';
+    $axisInfo: map.get($axis3dMap, $axis);
+    $rotation: rotate3d(nth($axisInfo, 1), nth($axisInfo, 2), nth($axisInfo, 3), $deg);
+  }
+
+  .piece#{$selector} {
+    @for $x from 0 to $cubeWidth {
+      @for $y from 0 to $cubeWidth {
+        &.x-#{$x}.y-#{$y} {
+          $xyPlacement:
+            translateX(($x * $pieceSize) - $pieceOffset)
+            translateY(($y * $pieceSize) - $pieceOffset)
+            translateZ($pieceOffset);
+
+          @include sideTransform('front', $rotation, $xyPlacement);
+          @include sideTransform('back', $rotation, $xyPlacement);
+          @include sideTransform('right', $rotation, $xyPlacement);
+          @include sideTransform('left', $rotation, $xyPlacement);
+          @include sideTransform('bottom', $rotation, $xyPlacement);
+          @include sideTransform('top', $rotation, $xyPlacement);
+        }
+      }
+    }
+  }
+}
+
+@mixin sideColor($color) {
+  $faceEdgeOffset: math.div($pieceSize, 30);
+
+  &.#{"" + $color} {
+    .face {
+      position: relative;
+      background: black;
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        position: absolute;
+        background: $color;
+        top: $faceEdgeOffset;
+        bottom: $faceEdgeOffset;
+        left: $faceEdgeOffset;
+        right: $faceEdgeOffset;
+        border-radius: math.div($pieceSize, 20);
+      }
+
+      .icon {
+        color: black;
+      }
+    }
+  }
+}
+
+@mixin actionIcon($position, $relPosition, $deg: 0deg) {
+  &.i-#{$position} {
+    #{$position}: math.div($pieceSize, -100);
+    #{$relPosition}: 50%;
+    transform: rotate($deg) translateX(-50%);
+  }
+}
